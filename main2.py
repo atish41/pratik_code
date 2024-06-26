@@ -55,9 +55,9 @@ def convert_to_latin1_compatible(text):
     
     return text
 
-def create_pdf_from_html(html_content, output_path, wkhtmltopdf_path):
-    config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
-    pdfkit.from_string(html_content, output_path, configuration=config)
+def create_pdf_from_html(html_content, output_path):
+    #config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
+    pdfkit.from_string(html_content, output_path)
 
 # Configure the Generative AI model with API key
 api_key = st.secrets["api_key"]  # Use secrets for storing API keys
@@ -100,7 +100,7 @@ if uploaded_questionnaire is not None and uploaded_form is not None:
         output_pdf_path = "visa_roadmap.pdf"
 
         # Create PDF from HTML content
-        create_pdf_from_html(html_content, output_pdf_path, wkhtmltopdf_path)
+        create_pdf_from_html(html_content, output_pdf_path)
 
         with open(output_pdf_path, "rb") as pdf_file:
             st.download_button(
