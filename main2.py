@@ -96,7 +96,7 @@ if uploaded_questionnaire is not None and uploaded_form is not None:
 
         # Convert the filled details to PDF
         output_pdf_path = "filled_form_details.pdf"
-        wkhtmltopdf_path = st.secrets["wkhtmltopdf_path"]  # Use secrets for storing paths
+        #wkhtmltopdf_path = st.secrets["wkhtmltopdf_path"]  # Use secrets for storing paths
         output_pdf_path = "visa_roadmap.pdf"
 
         # Create PDF from HTML content
