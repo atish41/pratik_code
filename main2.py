@@ -7,7 +7,9 @@ from fpdf import FPDF
 import unicodedata
 import google.generativeai as genai
 from test import extract_text_from_pdf
+from dotenv import load_dotenv
 
+load_dotenv()
 # Function to extract text from the first page of a PDF
 def extract_text_from_first_page(pdf_file):
     try:
@@ -60,7 +62,9 @@ def create_pdf_from_html(html_content, output_path, wkhtmltopdf_path):
     pdfkit.from_string(html_content, output_path, configuration=config)
 
 # Configure the Generative AI model with API key
-api_key = st.secrets["api_key"]  # Use secrets for storing API keys
+api_key = os.getenv("api_key")
+#api_key = st.secrets["AIzaSyBwzbkNHte8dSjSl9Ds7_aoxcTU20PH61g"]  # Use secrets for storing API keys
+  # Use secrets for storing API keys
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-1.5-flash')
 

@@ -1,16 +1,9 @@
-import pdfkit
+from weasyprint import HTML
 
-# HTML content to convert
-html_content = "<h1>Hello World</h1>"
+def create_pdf_with_weasyprint(html_content, output_path):
+    HTML(string=html_content).write_pdf(output_path)
 
-# Path to wkhtmltopdf executable
-wkhtmltopdf_path = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+html_content = "<h1>Hello, this is a PDF created using WeasyPrint!</h1>"
+output_pdf_path = "output_weasyprint.pdf"
 
-# Configuration
-config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
-
-# Output PDF path
-output_pdf_path = "test_output.pdf"
-
-# Create PDF from HTML content
-pdfkit.from_string(html_content, output_pdf_path, configuration=config)
+create_pdf_with_weasyprint(html_content, output_pdf_path)
